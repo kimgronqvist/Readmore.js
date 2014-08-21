@@ -1,3 +1,5 @@
+// Customized by Kim Grönqvist to also send event args to callbacks
+
 /*!
  * Readmore.js jQuery plugin
  * Author: @jed_foster
@@ -120,11 +122,11 @@
       }
 
       // Fire beforeToggle callback
-      $this.options.beforeToggle(trigger, element, expanded);
+      $this.options.beforeToggle(trigger, element, expanded, event);
 
       $(element).animate({'height': newHeight}, {duration: $this.options.speed, complete: function() {
           // Fire afterToggle callback
-          $this.options.afterToggle(trigger, element, expanded);
+          $this.options.afterToggle(trigger, element, expanded, event);
 
           $(trigger).replaceWith($($this.options[newLink]).on('click', function(event) { $this.toggleSlider(this, element, event) }).addClass('readmore-js-toggle'));
 
